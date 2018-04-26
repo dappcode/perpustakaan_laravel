@@ -14,10 +14,15 @@
 
 Route::get('/', 'GuestController@index');
 
+// email
 Route::get('/auth/verify/{token}', 'Auth\RegisterController@verify');
+Route::get('/auth/resend-verification', 'Auth\RegisterController@resendVerification');
 
+// pinjam dan mengembalikan buku
 Route::get('/books/{book}/borrow', 'BooksController@borrow')->name('guest.books.borrow');
 Route::patch('/books/{book}/return', 'BooksController@return')->name('member.books.return');
+
+// captcha
 Route::get('/refresh-captcha', 'Auth\RegisterController@refreshCaptcha');
 
 Auth::routes();

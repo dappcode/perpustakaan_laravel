@@ -19,12 +19,14 @@ class UserShouldVerified
         $response = $next($request);
 
         if(auth()->check() && !auth()->user()->is_verified) {
+            $link = url('auth/resend-verification') . '?email=' . urlencode(auth()->user()->email);
+            
             auth()->logout();
-
 
             Session::flash('flash_notification', [
                 'level' => 'warning',
-                'message' => 'Akun anda belum aktif, silahkan klik link verifikasi yang telah di kirim ke email anda!'
+                'message' => "Akun anda belum aktif, silahkan klik link verifikasi yang telah di kirim ke email anda! atau <a class='alert-link' href='$link'> Kirim Ulang Token </a>",
+                
             ]); 
 
             return redirect('/login');

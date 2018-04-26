@@ -110,4 +110,21 @@ class RegisterController extends Controller
         return redirect('/');
         
     }
+
+    public function resendVerification(Request $request)
+    {
+        $email = $request->email;
+        $user = User::where('email', $email)->first();
+
+        if ($user && !$user->is_verified) {            
+            $user->sendEmailVerification();
+
+            Session::flash('flash_notification', [
+                'level' => 'success',
+                'message' => 'Email berhasil di kirim !!',
+            ]);
+        }
+
+        return redirect('/login');
+    }
 }
