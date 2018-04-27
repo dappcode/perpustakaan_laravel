@@ -50,6 +50,9 @@
                                     <a class="nav-link" href="<?php echo e(route('books.index')); ?>"> Books </a>
                                 </li>
                             <?php endif; // app('laratrust')->hasRole ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo e(route('profile')); ?>">Profile </a>
+                            </li>
                         <?php endif; ?>
                     </ul>
 

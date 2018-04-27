@@ -1,4 +1,13 @@
-Klik link berikut untuk melakukan klik pada link berikut : 
-<a href=" {{ $link = url('auth/verify', $token). '?email=' . urlencode($user->email) }} "> {{ $link }} </a>
+@component('mail::message')
+# Halo {{ $user->name }}
 
+Klik button untuk verifikasi acount anda!
 
+@component('mail::button', ['url' => url('auth/verify', $user->verification_token) . '?email=' . urlencode($user->email)])
+
+Verifikasi
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
