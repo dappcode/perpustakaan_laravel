@@ -52,6 +52,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo e(route('members.index')); ?>"> Members </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo e(route('statistics.index')); ?>"> Statistics </a>
+                                </li>
                             <?php endif; // app('laratrust')->hasRole ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(route('profile')); ?>">Profile </a>

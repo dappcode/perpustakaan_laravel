@@ -133,6 +133,7 @@ class MembersController extends Controller
     /* Tugas
     * - Jika member sudah meminjam buku tidak boleh di hapus
     * - Jika member sedang meminjam buku maka tidak boleh di hapus
+    * - DataTables di show member
     */
     public function destroy(User $member)
     {
