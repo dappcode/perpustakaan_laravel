@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SettingController extends Controller
 {
@@ -39,6 +40,36 @@ class SettingController extends Controller
         return redirect()->route('profile')->with('flash_notification', [
             'level' => 'success',
             'message' => 'Berhasil mengedit data profile '.$user->name,
+        ]);
+    }
+
+    public function editPassword()
+    {
+        return view('settings.edit-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $user = auth()->user();
+
+        $request->validate([
+            'password' => 'required',
+            'new_password' => 'required|confirmed|min:6',
+        ]);
+
+        if (!Hash::check($request->password, $user->password)){
+            return redirect()->back()->with('flash_notification', [
+                'level' => 'danger',
+                'message' => 'Password Lama yang anda masukkan salah!',
+            ]);
+        }
+
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        return redirect()->route('password.edit')->with('flash_notification', [
+            'level' => 'success',
+            'message' => 'Berhasil memperbarui password!',
         ]);
     }
 }

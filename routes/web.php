@@ -25,10 +25,14 @@ Route::patch('/books/{book}/return', 'BooksController@return')->name('member.boo
 // captcha
 Route::get('/refresh-captcha', 'Auth\RegisterController@refreshCaptcha');
 
-// Settings
+// Settings Profile
 Route::get('settings/profile', 'SettingController@profile')->name('profile');
 Route::get('settings/profile/edit', 'SettingController@editProfile')->name('profile.edit');
 Route::post('settings/profile', 'SettingController@updateProfile')->name('profile.update');
+
+// Setting Password
+Route::get('settings/password/edit', 'SettingController@editPassword')->name('password.edit');
+Route::post('settings/password', 'SettingController@updatePassword')->name('password.update');
 
 Auth::routes();
 
@@ -36,4 +40,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function() {
     Route::resource('authors', 'AuthorsController');
     Route::resource('books', 'BooksController');
+    Route::resource('members', 'MembersController');
 });

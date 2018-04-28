@@ -48,6 +48,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('books.index') }}"> Books </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('members.index') }}"> Members </a>
+                                </li>
                             @endrole
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile') }}">Profile </a>
@@ -68,9 +71,10 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('password.edit') }}"> <i class="fa fa-btn fa-lock"></i> Change Password </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}
                                     </a>
 

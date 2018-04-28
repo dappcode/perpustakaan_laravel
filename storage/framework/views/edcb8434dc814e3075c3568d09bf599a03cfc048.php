@@ -49,6 +49,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo e(route('books.index')); ?>"> Books </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo e(route('members.index')); ?>"> Members </a>
+                                </li>
                             <?php endif; // app('laratrust')->hasRole ?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo e(route('profile')); ?>">Profile </a>
@@ -69,9 +72,10 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="<?php echo e(route('password.edit')); ?>"> <i class="fa fa-btn fa-lock"></i> Change Password </a>
                                     <a class="dropdown-item" href="<?php echo e(route('logout')); ?>"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
                                         <?php echo e(__('Logout')); ?>
 
                                     </a>
