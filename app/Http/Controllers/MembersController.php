@@ -91,9 +91,9 @@ class MembersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $member)
     {
-        
+        return view('members.show', compact('member'));
     }
 
     /**
@@ -102,9 +102,9 @@ class MembersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $member)
     {
-        //
+        return view('members.edit', compact('member'));
     }
 
     /**
@@ -114,9 +114,14 @@ class MembersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreMemberRequest $request, User $member)
     {
-        //
+        // dd($request);
+        $member->update($request->only('name', 'email'));
+        return redirect()->route('members.index')->with('flash_notification', [
+            'level' => 'success',
+            'message' => 'berhasil memperbarui member '.$member->name,
+        ]);
     }
 
     /**
@@ -125,8 +130,25 @@ class MembersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /* Tugas
+    * - Jika member sudah meminjam buku tidak boleh di hapus
+    * - Jika member sedang meminjam buku maka tidak boleh di hapus
+    */
+    public function destroy(User $member)
     {
-        //
+        if ($member->hasRole('member')) {
+            $member->delete();
+
+            return redirect()->route('members.index')->with('flash_notification', [
+                'level' => 'danger',
+                'message' => "Berhasil menghapus member $member->name"
+            ]);
+        }
+
+        return redirect()->route('members.index')->with('flash_notification', [
+            'level' => 'danger',
+            'message' => "Gagal Menghapus admin $member-name"
+        ]);
+
     }
 }
