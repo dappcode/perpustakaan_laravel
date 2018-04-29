@@ -14,9 +14,48 @@
                         </div>
                     @endif
                 Selamat Datang Admin!!
+                <hr>
+                <h4 class="text-header"> Statistics Authors </h4>
+                <canvas id="chartPenulis" width="400" height="150"></canvas>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script src=" {{ asset('js/Chart.min.js') }} "></script>
+
+    <script>
+    var dataChart = {
+        labels: {!! json_encode($authors) !!},
+        datasets: [{
+            label: 'Jumlah Buku',
+            data: {!! json_encode($books) !!},
+            backgroundColor: "rgba(151,187,205,0.5)",
+            borderColor: "rgba(151,187,205,0.8)",
+        }]
+    };
+
+    var options = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
+            }]
+        }
+    };
+
+    var ctx = document.getElementById("chartPenulis").getContext("2d");
+    console.log(ctx);
+
+    var authorChart = new Chart(ctx, {
+        type: 'line',
+        data: dataChart,
+        option: options
+    });
+    </script>
+@endpush

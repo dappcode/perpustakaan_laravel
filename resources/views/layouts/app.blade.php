@@ -17,9 +17,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/selectize.bootstrap4.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -38,24 +38,24 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @if(auth()->check())
-                            <li class="nav-item">
+                            <li class="nav-item {{ Route::is('home') ? 'active' : '' }} ">
                                 <a class="nav-link" href="{{ route('home') }}"> Beranda </a>
                             </li>
                             @role('admin')
-                                <li class="nav-item">
+                                <li class="nav-item {{ Route::is('authors.index') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('authors.index') }}"> Penulis </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {{ Route::is('books.index') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('books.index') }}"> Books </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {{ Route::is('members.index') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('members.index') }}"> Members </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item {{ Route::is('statistics.index') ? 'active' : '' }}">
                                     <a class="nav-link" href="{{ route('statistics.index') }}"> Statistics </a>
                                 </li>
                             @endrole
-                            <li class="nav-item">
+                            <li class="nav-item {{ Route::is('profile') ? 'active' : '' }}">
                                 <a class="nav-link" href="{{ route('profile') }}">Profile </a>
                             </li>
                         @endif
@@ -103,12 +103,14 @@
     <script src="{{ asset('js/popper.min.js') }}"></script>
 
     {{-- DataTables --}}
-    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap4.min.js') }}"></script>
 
     {{-- untuk pop up js --}}
     <script src="{{ asset('js/selectize.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+
+    
     @stack('scripts')
 </body>
 </html>

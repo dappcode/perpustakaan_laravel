@@ -16,7 +16,8 @@
                         <h2 class="float-left"> Books </h2>  
                     </div>
                     <div class="col-6">
-                        <a class="btn btn-primary float-right" href="{{ route('books.create')}}"><i class="fas fa-plus-circle"></i> Add Books </a>
+                        <a class="btn btn-primary float-right ml-3" href="{{ route('books.create')}}"><i class="fas fa-plus-circle"></i> Add Books </a>
+                        <a href=" {{ route('export.books.xls') }} " class="btn btn-info float-right"><i class="fas fa-upload"></i> Export</a>
                     </div>                    
                 </div>
                 <div class="card-body">

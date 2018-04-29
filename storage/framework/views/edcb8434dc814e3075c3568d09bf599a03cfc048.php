@@ -17,9 +17,9 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/fontawesome-all.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/dataTables.bootstrap4.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/selectize.bootstrap4.css')); ?>" rel="stylesheet">
-    <link href="<?php echo e(asset('css/jquery.dataTables.min.css')); ?>" rel="stylesheet">
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
 <body>
@@ -39,24 +39,24 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <?php if(auth()->check()): ?>
-                            <li class="nav-item">
+                            <li class="nav-item <?php echo e(Route::is('home') ? 'active' : ''); ?> ">
                                 <a class="nav-link" href="<?php echo e(route('home')); ?>"> Beranda </a>
                             </li>
                             <?php if (app('laratrust')->hasRole('admin')) : ?>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo e(Route::is('authors.index') ? 'active' : ''); ?>">
                                     <a class="nav-link" href="<?php echo e(route('authors.index')); ?>"> Penulis </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo e(Route::is('books.index') ? 'active' : ''); ?>">
                                     <a class="nav-link" href="<?php echo e(route('books.index')); ?>"> Books </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo e(Route::is('members.index') ? 'active' : ''); ?>">
                                     <a class="nav-link" href="<?php echo e(route('members.index')); ?>"> Members </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item <?php echo e(Route::is('statistics.index') ? 'active' : ''); ?>">
                                     <a class="nav-link" href="<?php echo e(route('statistics.index')); ?>"> Statistics </a>
                                 </li>
                             <?php endif; // app('laratrust')->hasRole ?>
-                            <li class="nav-item">
+                            <li class="nav-item <?php echo e(Route::is('profile') ? 'active' : ''); ?>">
                                 <a class="nav-link" href="<?php echo e(route('profile')); ?>">Profile </a>
                             </li>
                         <?php endif; ?>
@@ -105,12 +105,14 @@
     <script src="<?php echo e(asset('js/popper.min.js')); ?>"></script>
 
     
-    <script src="<?php echo e(asset('js/dataTables.bootstrap4.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/dataTables.bootstrap4.min.js')); ?>"></script>
 
     
     <script src="<?php echo e(asset('js/selectize.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/custom.js')); ?>"></script>
+
+    
     <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>
