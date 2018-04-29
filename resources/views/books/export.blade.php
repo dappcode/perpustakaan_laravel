@@ -16,7 +16,7 @@
                 <div class="card-header"> Export Book </div>
 {{-- {{dump($errors)}} --}}
                 <div class="card-body">
-                    <form class="form-horizontal" action=" {{ route('export.books.post') }} " method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action=" {{ route('export.books.post') }} " method="post" enctype="multipart/form-data" target="_blank">
                         @csrf
 
                         <div class="form-group row">
@@ -30,6 +30,29 @@
                                 @if ($errors->has('author_id'))
                                     <span class="invalid-feedback">
                                         <strong> {{ $errors->first('author_id') }} </strong>
+                                    </span>
+                                    <br>
+                                @endif
+                            </div>
+                            <label for="text" class="col-sm-2 col-form-label">Pilih Output:</label>
+                            <div class="col-sm-10">
+                                <div class="form-control {{ $errors->has('type') ? ' is-invalid' : '' }}">
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="radio" name="type" value="xls">
+                                        <label class="form-check-label">
+                                            Excel
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type" value="pdf">
+                                        <label class="form-check-label">
+                                            Pdf
+                                        </label>
+                                    </div>
+                                </div>
+                                @if ($errors->has('type'))
+                                    <span class="invalid-feedback">
+                                        <strong> {{ $errors->first('type') }} </strong>
                                     </span>
                                 @endif
                             </div>

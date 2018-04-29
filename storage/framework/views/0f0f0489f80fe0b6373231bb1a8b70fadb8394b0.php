@@ -14,7 +14,7 @@
                 <div class="card-header"> Export Book </div>
 
                 <div class="card-body">
-                    <form class="form-horizontal" action=" <?php echo e(route('export.books.post')); ?> " method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" action=" <?php echo e(route('export.books.post')); ?> " method="post" enctype="multipart/form-data" target="_blank">
                         <?php echo csrf_field(); ?>
 
                         <div class="form-group row">
@@ -28,6 +28,29 @@
                                 <?php if($errors->has('author_id')): ?>
                                     <span class="invalid-feedback">
                                         <strong> <?php echo e($errors->first('author_id')); ?> </strong>
+                                    </span>
+                                    <br>
+                                <?php endif; ?>
+                            </div>
+                            <label for="text" class="col-sm-2 col-form-label">Pilih Output:</label>
+                            <div class="col-sm-10">
+                                <div class="form-control <?php echo e($errors->has('type') ? ' is-invalid' : ''); ?>">
+                                    <div class="form-check">
+                                        <input class="form-check-input " type="radio" name="type" value="xls">
+                                        <label class="form-check-label">
+                                            Excel
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="type" value="pdf">
+                                        <label class="form-check-label">
+                                            Pdf
+                                        </label>
+                                    </div>
+                                </div>
+                                <?php if($errors->has('type')): ?>
+                                    <span class="invalid-feedback">
+                                        <strong> <?php echo e($errors->first('type')); ?> </strong>
                                     </span>
                                 <?php endif; ?>
                             </div>
