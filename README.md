@@ -40,7 +40,7 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 - Using DataTables
 
 ## Overview
-### <a href="http://protected-castle-65319.herokuapp.com/" target="_blank"> Perpustakaan.demo</a>
+### <a href="http://perpus.herokuapp.com/" target="_blank"> Perpustakaan.demo</a> 
 
 
 
