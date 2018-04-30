@@ -13,11 +13,11 @@
                 Are You Sure to Delete ?
             </div>
             <div class="modal-footer">
-                <form action="<?php echo e($delete_url); ?>" class="float-right" method="post" data-confirm="<?php echo e($confirm_message); ?>">
+                <form action="<?php echo e($delete_url); ?>" class="float-right" method="post" data_confirm="<?php echo e($confirm_message); ?>">
                         <?php echo csrf_field(); ?>
                         <?php echo method_field('DELETE'); ?>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
-                    <button type="submit" class="btn btn-warning"><i class="fas fa-trash-alt"></i> Delete</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
                 </form>
             </div>
         </div>

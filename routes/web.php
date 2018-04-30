@@ -45,4 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     Route::get('export/books', 'BookExportController@export')->name('export.books');
     Route::post('export/books', 'BookExportController@exportPost')->name('export.books.post');
+
+    Route::get('template/books', 'BooksImportController@generateExcelTemplate')->name('template.books');
+    Route::post('import/books', 'BooksImportController@importExcel')->name('import.books.excel');
 });

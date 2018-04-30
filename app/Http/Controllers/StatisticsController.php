@@ -14,7 +14,7 @@ class StatisticsController extends Controller
     public function index(Request $request, Builder $builder)
     {
         if ($request->ajax()) {
-            $statistics = BorrowLog::with('book', 'user');
+            $statistics = BorrowLog::with('book', 'user');  
             
             return Datatables::of($statistics)
                ->addColumn('returned_at', function ($statistic) {
