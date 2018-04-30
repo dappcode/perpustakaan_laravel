@@ -42,5 +42,15 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 ## Overview
 ### <a href="http://perpus.herokuapp.com/" target="_blank"> Perpustakaan.demo</a> 
 
+### login : 
+- admin 
+    - email : admin@gmail.com
+    - password : qweasd123
+
+- member 
+    - email : member@gmail.com
+    - password : qweasd123
+    
+
 
 
